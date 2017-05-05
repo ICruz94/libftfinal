@@ -11,22 +11,29 @@
 # **************************************************************************** #
 
 NAME = libft.a
-CFLAGS = -Wall -Werror -Wextra -I. -c
-FILES = ft_isspace.c \
-		ft_lstdelone.c \
-		ft_striter.c \
-		ft_strncmp.c \
-		ft_isdigit.c \
-		ft_itoa.c \
-		ft_memccpy.c \
-		ft_strncat.c \
-		ft_strnequ.c \
-		ft_memset.c \
-		ft_bzero.c \
-		ft_memcpy.c \
-		ft_memmove.c \
+
+CFLAGS = -Wall -Werror -Wextra -c 
+
+CC = gcc
+
+FILES = ft_isdigit.c \
+		ft_isspace.c \
 		ft_memchr.c \
 		ft_memcmp.c \
+		ft_islower.c \
+		ft_isupper.c \
+		ft_isalpha.c \
+		ft_isalnum.c \
+		ft_isprint.c \
+		ft_isascii.c \
+		ft_bzero.c \
+		ft_itoa.c \
+		ft_memccpy.c \
+		ft_memset.c \
+		ft_memcpy.c \
+		ft_memmove.c \
+		ft_strncat.c \
+		ft_strnequ.c \
 		ft_strlen.c \
 		ft_strdup.c \
 		ft_strcpy.c \
@@ -38,15 +45,9 @@ FILES = ft_isspace.c \
 		ft_strnstr.c \
 		ft_strcmp.c \
 		ft_atoi.c \
-		ft_islower.c \
-		ft_isupper.c \
-		ft_isalpha.c \
-		ft_isalnum.c \
-		ft_isprint.c \
 		ft_toupper.c \
 		ft_tolower.c \
 		ft_strncpy.c \
-		ft_isascii.c \
 		ft_memalloc.c \
 		ft_memdel.c \
 		ft_strnew.c \
@@ -74,17 +75,17 @@ FILES = ft_isspace.c \
 		ft_lstadd.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
+		ft_lstdelone.c \
+		ft_striter.c \
+		ft_strncmp.c
 
-OBJ	= $(FILES:%.c=%.o)
+OBJ	= $(FILES:.c=.o)
 
 all: $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME): 
+	$(CC) $(CFLAGS) $^ $(FILES)
 	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
-
-$(OBJ): $(FILES)
-	gcc $(CFLAGS) $(FILES)
 
 clean:
 	rm -f $(OBJ)
@@ -94,4 +95,4 @@ fclean: clean
 
 re:	fclean all
 
-.PHONy: clean fclean all re
+.PHONY: clean fclean all re
